@@ -153,7 +153,7 @@ You can then build and flash as detailed below.
 First, you'll need the Jade source code including its sub-modules checked out:
 
 ```
-git clone --recursive https://github.com/Blockstream/Jade.git $HOME/jade
+git clone --recursive https://github.com/asdfghjklcode/Jade.git $HOME/jade
 cd $HOME/jade
 git submodule update --init --recursive
 ```
