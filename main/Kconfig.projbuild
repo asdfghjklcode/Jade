@@ -741,3 +741,13 @@ menu "Blockstream Jade"
             Port to expose Wi-Fi logging on.
 
 endmenu
+
+menu "Virtual Camera Settings"
+
+    config VIRTUAL_CAMERA_PICTURE
+        bool "Enable Virtual Camera Picture"
+        default n
+        help
+            Enable this option to use a static picture instead of a real camera feed.
+
+endmenu

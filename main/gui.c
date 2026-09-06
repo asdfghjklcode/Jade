@@ -2837,6 +2837,9 @@ gui_activity_t* gui_current_activity(void) { return current_activity; }
 #ifdef CONFIG_BOARD_TYPE_JADE_ANY
 extern const uint8_t splashstart[] asm("_binary_splash_bin_gz_start");
 extern const uint8_t splashend[] asm("_binary_splash_bin_gz_end");
+#else
+extern const uint8_t splashstart[] asm("_binary_splash_custom_bin_gz_start");
+extern const uint8_t splashend[] asm("_binary_splash_custom_bin_gz_end");
 #endif
 
 gui_activity_t* gui_display_splash(void)
@@ -2850,7 +2853,8 @@ gui_activity_t* gui_display_splash(void)
         Picture* const pic = get_picture(splashstart, splashend);
         gui_make_picture(&splash_node, pic);
 #else
-        gui_make_text(&splash_node, "Jade DIY", TFT_WHITE);
+        Picture* const pic = get_picture(splashstart, splashend);
+        gui_make_picture(&splash_node, pic);
 #endif
         gui_set_align(splash_node, GUI_ALIGN_CENTER, GUI_ALIGN_MIDDLE);
         gui_set_parent(splash_node, act->root_node);

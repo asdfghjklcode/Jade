@@ -17,3 +17,6 @@ dist/
 jade_client.egg-info/
 docs/_build/
 **/nvs_flash.bin
+logo/*.custom.bmp
+logo/*.custom.xcf
+
