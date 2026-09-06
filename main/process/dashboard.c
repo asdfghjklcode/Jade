@@ -1925,6 +1925,16 @@ static void handle_flip_orientation(void)
     }
 }
 
+#if defined(CONFIG_HAS_CAMERA) && !defined(CONFIG_BOARD_TYPE_JADE_ANY)
+static void handle_camera_rotate(void)
+{
+    // Toggle the extra 180-degree camera image rotation - takes effect
+    // next time the camera is used
+    const uint8_t gui_flags = storage_get_gui_flags();
+    storage_set_gui_flags(gui_flags ^ GUI_FLAGS_CAMERA_ROTATED);
+}
+#endif
+
 #ifdef CONFIG_HAS_CAMERA
 static void handle_pinserver_scan(void)
 {
@@ -2301,6 +2311,14 @@ static void handle_settings(const bool startup_menu)
         case BTN_SETTINGS_DISPLAY_ORIENTATION:
             handle_flip_orientation();
             break;
+
+#if defined(CONFIG_HAS_CAMERA) && !defined(CONFIG_BOARD_TYPE_JADE_ANY)
+        case BTN_SETTINGS_DISPLAY_CAMERA_ROTATE:
+            handle_camera_rotate();
+            // remake parent screen to update the menu item label
+            act = make_display_settings_activity();
+            break;
+#endif
 
         case BTN_SETTINGS_DISPLAY_THEME:
             handle_display_theme();
