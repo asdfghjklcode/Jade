@@ -19,4 +19,5 @@ docs/_build/
 **/nvs_flash.bin
 logo/*.custom.bmp
 logo/*.custom.xcf
+configs/custom/*.defaults
 
